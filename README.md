@@ -17,7 +17,6 @@ A full-stack real-time chat application built with **React**, **Node.js**, **Exp
   - [Environment Variables](#environment-variables)
   - [Running the App](#running-the-app)
 - [Deployment](#deployment)
-- [License](#license)
 
 ---
 
