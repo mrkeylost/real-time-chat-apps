@@ -17,6 +17,7 @@ A full-stack real-time chat application built with **React**, **Node.js**, **Exp
   - [Environment Variables](#environment-variables)
   - [Running the App](#running-the-app)
 - [Deployment](#deployment)
+- [Contributing](#contributing)
 
 ---
 
@@ -116,6 +117,18 @@ Frontend runs at `http://localhost:5173`, backend at `http://localhost:5001`.
 ## ☁️ Deployment
 
 This project is configured for **Vercel** using `experimentalServices`. The frontend is served at `/` and the backend is routed under `/_/backend`.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! To get started:
+
+1. Fork this repository
+2. Create a new branch: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature-name`
+5. Open a Pull Request
 
 ---
 
