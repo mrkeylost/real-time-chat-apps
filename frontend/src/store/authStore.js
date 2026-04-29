@@ -32,11 +32,11 @@ export const useAuthStore = create((set, get) => ({
     set({ isSignup: true });
     try {
       const res = await api.post("/auth/signup", newUser);
-      set({ auth: res.data.data });
-
       if (!res.data.data) {
         return toast.error(res.data.message);
       }
+
+      set({ auth: res.data.data });
       toast.success(res.data.message);
 
       get().socketConnect();
@@ -51,11 +51,11 @@ export const useAuthStore = create((set, get) => ({
     set({ isLogin: true });
     try {
       const res = await api.post("/auth/login", user);
-      set({ auth: res.data.data });
-
       if (!res.data.data) {
         return toast.error(res.data.message);
       }
+
+      set({ auth: res.data.data });
       toast.success(res.data.message);
 
       get().socketConnect();
@@ -83,11 +83,11 @@ export const useAuthStore = create((set, get) => ({
     set({ isUpdateProfile: true });
     try {
       const res = await api.put("/auth/update-profile", updatedProfile);
-      set({ auth: res.data.data });
-
       if (!res.data.data) {
         return toast.error(res.data.message);
       }
+
+      set({ auth: res.data.data });
       toast.success(res.data.message);
     } catch (error) {
       toast.error(error.response.data.message);
