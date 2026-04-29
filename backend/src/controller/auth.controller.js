@@ -8,7 +8,7 @@ export const signup = async (req, res) => {
   const { email, fullname, password } = req.body;
 
   if (!email.trim() || !fullname.trim() || !password.trim()) {
-    res.json({ message: "All field are required" });
+    return res.json({ message: "All field are required" });
   }
 
   if (password.length < 6)
@@ -26,9 +26,9 @@ export const signup = async (req, res) => {
   if (user) {
     generateToken(user._id, res);
     await user.save();
-    res.json({ message: "Sign Up Successfull", data: user });
+    return res.json({ message: "Sign Up Successfull", data: user });
   } else {
-    res.json({ message: "invalid user" });
+    return res.json({ message: "invalid user" });
   }
 };
 
@@ -37,23 +37,23 @@ export const login = async (req, res) => {
 
   const findUser = await userModel.findOne({ email });
   if (!findUser) {
-    res.json({ message: "invalid email or password" });
+    return res.json({ message: "invalid email or password" });
   }
 
   const checkPassword = await bcrypt.compare(password, findUser.password);
   if (!checkPassword) {
-    res.json({ message: "invalid email or password" });
+    return res.json({ message: "invalid email or password" });
   }
 
   generateToken(findUser._id, res);
-  res.json({ message: "Login successful", data: findUser });
+  return res.json({ message: "Login successful", data: findUser });
 };
 
 export const logout = (req, res) => {
   res.cookie("jwt", "", {
     maxAge: 0,
   });
-  res.json({ message: "Logout Successfull" });
+  return res.json({ message: "Logout Successfull" });
 };
 
 export const updateProfile = async (req, res) => {
@@ -77,14 +77,14 @@ export const updateProfile = async (req, res) => {
     },
   );
 
-  res.json({ message: "Update profile success", data: updatedUser });
+  return res.json({ message: "Update profile success", data: updatedUser });
 };
 
 export const checkAuth = (req, res) => {
   try {
-    res.json(req.user);
+    return res.json({ data: req.user });
   } catch (error) {
     console.error("Error in check auth");
-    res.json({ message: "Internal Server Error" });
+    return res.json({ message: "Internal Server Error" });
   }
 };
