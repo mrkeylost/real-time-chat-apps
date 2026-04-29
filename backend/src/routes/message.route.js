@@ -2,19 +2,15 @@ import express from "express";
 import { protectRoute } from "../middleware/auth.middleware.js";
 import handleAsync from "../utils/CatchAsync.js";
 import {
+  getMessage,
   getUserSidebar,
   sendMessage,
 } from "../controller/message.controller.js";
 
 const router = express.Router();
 
-router.route(
-  "/users",
-  handleAsync(protectRoute, "protect route"),
-  handleAsync(getUserSidebar, "get user sidebar"),
-);
 router
-  .route("/:id")
+  .route("/users")
   .get(
     handleAsync(protectRoute, "protect route"),
     handleAsync(getUserSidebar, "get user sidebar"),
@@ -24,6 +20,12 @@ router
   .post(
     handleAsync(protectRoute, "protect route"),
     handleAsync(sendMessage, "send message"),
+  );
+router
+  .route("/:id")
+  .get(
+    handleAsync(protectRoute, "protect route"),
+    handleAsync(getMessage, "get user sidebar"),
   );
 
 export default router;

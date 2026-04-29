@@ -6,13 +6,13 @@ import UserRouter from "./routes/auth.route.js";
 import MessageRouter from "./routes/message.route.js";
 import AppError from "./utils/AppError.js";
 import { ConnectDB } from "./repository/db.js";
+import { app, server } from "./socket/socket.js";
 
 if (process.env.NODE_ENV !== "production") {
   dotenv.config();
 }
 
 const PORT = process.env.PORT || 5001;
-const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use("/api/auth", UserRouter);
-app.use("api/message", MessageRouter);
+app.use("/api/message", MessageRouter);
 
 app.use("*", (req, res, next) => {
   next(new AppError("Page Not Found", 404));
@@ -36,7 +36,7 @@ app.use((err, req, res, next) => {
 
 ConnectDB()
   .then(() => {
-    app.listen(PORT, () => console.log("Listen port"));
+    server.listen(PORT, () => console.log("Listen port"));
   })
   .catch((e) => {
     console.log("DB Failed", e);
