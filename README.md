@@ -32,13 +32,13 @@ A full-stack real-time chat application built with **React**, **Node.js**, **Exp
 
 ## 🛠 Tech Stack
 
-| Layer      | Technology                                      |
-|------------|-------------------------------------------------|
-| Frontend   | React 19, Vite, Tailwind CSS, DaisyUI Zustand   |
-| Backend    | Node.js, Express.js, Socket.IO                  |
-| Database   | MongoDB (via Mongoose)                          |
-| Storage    | Cloudinary                                      |
-| Deployment | Vercel                                          |
+| Layer      | Technology                                         |
+|------------|----------------------------------------------------|
+| Frontend   | React 19, Vite, Tailwind CSS, DaisyUI, Zustand     |
+| Backend    | Node.js, Express.js, Socket.IO                     |
+| Database   | MongoDB (via Mongoose)                             |
+| Storage    | Cloudinary                                         |
+| Deployment | Vercel                                             |
 
 ---
 
